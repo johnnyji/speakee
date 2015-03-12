@@ -1,7 +1,7 @@
 <h1>HELLO</h1>
 
 <div class="create-confession-partial">
-  <%= link_to "Create new confession", new_confessions_path %>
+  <%= link_to "Create new confession", new_confession_path %>
 </div>
 
 <div class="confessions-list-container">
@@ -11,8 +11,8 @@
       <p><%= confession.body %></p>
 
       <div class="links">
-        <%= link_to "Edit", edit_confessions_path(@confession) %> |
-        <%= link_to "Delete", confessions_path, method: :delete, confirm: "Are you sure?" %>
+        <%= link_to "Edit", edit_confession_path(confession) %> |
+        <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
       </div>
 
     </div>

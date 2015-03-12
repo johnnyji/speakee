@@ -37,6 +37,8 @@ class ConfessionsController < ApplicationController
   end
 
   def destroy
+    @confession.destroy
+    redirect_to action: "index"
   end
 
   ########### PRIVATE ###########
