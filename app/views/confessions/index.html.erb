@@ -1,5 +1,20 @@
 <h1>HELLO</h1>
 
 <div class="create-confession-partial">
-  <%= render partial: "partials/new" %>
+  <%= link_to "Create new confession", new_confessions_path %>
+</div>
+
+<div class="confessions-list-container">
+  <% @confessions.each do |confession| %>
+    <div class="confession-container">
+      <h3><%= confession.title %></h3>
+      <p><%= confession.body %></p>
+
+      <div class="links">
+        <%= link_to "Edit", edit_confessions_path(@confession) %> |
+        <%= link_to "Delete", confessions_path, method: :delete, confirm: "Are you sure?" %>
+      </div>
+
+    </div>
+  <% end %>
 </div>

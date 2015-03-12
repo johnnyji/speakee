@@ -10,9 +10,10 @@ header {
   @include position-x;
   position: relative;
   left: 50%;
-  height: 50vh;
+  height: auto;
   width: 60vw;
   margin: 1em 0;
+  padding: 1em;
   background-color: $test-color;
 }
 
