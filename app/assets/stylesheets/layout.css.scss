@@ -1,0 +1,21 @@
+@import "appwide";
+
+header {
+  position: relative;
+  padding: 1em;
+  background-color: $test-color;
+}
+
+.template-container {
+  @include position-x;
+  position: relative;
+  left: 50%;
+  height: 50vh;
+  width: 60vw;
+  margin: 1em 0;
+  background-color: $test-color;
+}
+
+footer {
+  background-color: $test-color;
+}

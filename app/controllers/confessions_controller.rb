@@ -1,5 +1,6 @@
 class ConfessionsController < ApplicationController
   def index
+    @confessions = Confession.all.order("created_at DESC")
   end
 
   def show
@@ -16,4 +17,11 @@ class ConfessionsController < ApplicationController
 
   def destroy
   end
+
+  ########### PRIVATE ###########
+  private
+  def confession_params
+    params.require(:confession).permit(:title, :body)
+  end
+
 end
