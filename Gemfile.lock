@@ -186,6 +186,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  omniauth (~> 1.2.2)
   omniauth-facebook (~> 2.0.1)
   pg
   pry-rails (~> 0.3.3)
