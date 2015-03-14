@@ -4,19 +4,35 @@ header {
   position: relative;
   padding: 1em;
   background-color: $test-color;
+  height: 8vh;
 }
 
-.template-container {
-  @include position-x;
-  position: relative;
-  left: 50%;
+section {
   height: auto;
-  width: 60vw;
-  margin: 1em 0 3em 0;
-  padding: 1em;
-  background-color: $test-color;
+  min-height: 84vh;
+  margin: 0;
+  padding: 1.5em 0 3em 0;
+  .template-container {
+    @include position-x;
+    position: relative;
+    left: 50%;
+    height: auto;
+    width: 60vw;
+    padding: 1em;
+    background-color: $test-color;
+    border-radius: 5px;
+    @include medium-viewport {
+      width: 80vw;
+    }
+    @include mobile-viewport {
+      width: 90vw;
+      text-align: center;
+    }
+  }
 }
 
 footer {
   background-color: $test-color;
+  min-height: 8vh;
+  height: auto;
 }

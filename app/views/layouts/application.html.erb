@@ -17,10 +17,12 @@
       <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
     <% end %>
   </header>
-
-  <div class="template-container">
-    <%= yield %>
-  </div>
+  
+  <section>
+    <div class="template-container">
+      <%= yield %>
+    </div>
+  </section>
 
   <footer>
     &copy; 2015 | Johnny Ji | Awesome Footer

@@ -6,8 +6,40 @@
 
 // INDEX VIEW
 
+// Each Confession
 .confession-container {
+  text-align: left;
   margin: 1em 0;
-  padding: 1em;
+  padding: 1.3em;
+  border-radius: 5px;
   background-color: $white;
+  .id {
+    color: #202020;
+    font-weight: normal;
+  }
+  .title {
+    font-size: 1.3em;
+    letter-spacing: -0.5px;
+    margin: 0.5em 0;
+    @include mobile-viewport {
+      font-size: 1.2em;
+    }
+  }
+  .date {
+    font-size: 0.9em;
+    margin-bottom: 2em;
+  }
+  .body {
+    margin: 0.3em 0 2em 0;
+  }
+}
+
+// NEW VIEW
+
+.create-confession-container {
+  position: relative;
+  @include position-x;
+  left: 50%;
+  text-align: center;
+  padding: 2em 0;
 }

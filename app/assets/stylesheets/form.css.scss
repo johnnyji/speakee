@@ -1,0 +1,42 @@
+@import "appwide";
+
+.form-container {
+  position: relative;
+  @include position-x;
+  left: 50%;
+  width: 60%;
+  input {
+    width: 100%;
+    height: 35px;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border-style: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  textarea {
+    width: 100%;
+    height: 180px;
+    padding: 0.5em;
+    resize: none;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    border-style: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  .submit-button {
+    input {
+      width: 70%;
+      @include medium-viewport {
+        width: 85%;
+      }
+      @include mobile-viewport {
+        width: 100%;
+      }
+    }
+  }
+}

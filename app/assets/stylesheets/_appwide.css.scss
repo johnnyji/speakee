@@ -16,7 +16,7 @@ html {
 }
 
 @mixin medium-viewport {
-  @media (min-width: 401px) and (max-width: 600px) {
+  @media (min-width: 401px) and (max-width: 700px) {
     @content;
   }
 }

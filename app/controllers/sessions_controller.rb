@@ -9,8 +9,6 @@ class SessionsController < ApplicationController
   def show #profile page
     @user = User.find(params[:id])
     @gender, @email = GetUserFacebookInfo.call(@user)
-    # current_user = user.facebook.get_object("me")
-    # @user_gender = current_user["gender"]
   end
 
   def destroy
