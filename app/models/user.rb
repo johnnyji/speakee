@@ -13,4 +13,11 @@ class User < ActiveRecord::Base
       user.oauth_expiry_date = Time.at(auth.credentials.expires_at)
     end
   end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
+    # u = User.find(params[:id])
+    # u.facebook.get_object("me")
+    # this will return a hash of the user's facebook information
+  end
 end

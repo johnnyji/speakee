@@ -1,0 +1,6 @@
+<% if current_user %>
+  <p>
+    <%= current_user.first_name %> <%= current_user.last_name %> is <%= @user_gender %>
+  </p>
+<% else %>
+<% end %>

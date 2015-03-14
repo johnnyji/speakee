@@ -11,7 +11,8 @@
   <header>
     <% if current_user %>
       Signed in as <%= current_user.first_name %> <%= current_user.last_name %>
-      <%= link_to "Sign out", signout_path, class: "sign-out" %>
+      <%= link_to "Sign out", signout_path, class: "sign-out" %>&nbsp;
+      <%= link_to "Profile", session_path(current_user) %>
     <% else %>
       <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
     <% end %>
