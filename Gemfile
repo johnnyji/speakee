@@ -13,6 +13,7 @@ gem 'pry-rails', '~> 0.3.3'
 gem 'responders', '~> 2.1.0'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.1'
+gem 'koala', '~> 1.11.1'
 
 group :development, :test do
   gem 'byebug'

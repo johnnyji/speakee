@@ -8,9 +8,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <header>
-    <%= link_to "Sign in with Facebook", "/auth/facebook" %>
+    <% if current_user %>
+      Signed in as <%= current_user.first_name %> <%= current_user.last_name %>
+      <%= link_to "Sign out", signout_path, class: "sign-out" %>
+    <% else %>
+      <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
+    <% end %>
   </header>
 
   <div class="template-container">
@@ -22,3 +26,4 @@
   </footer>
 </body>
 </html>
+
