@@ -16,8 +16,9 @@ class User < ActiveRecord::Base
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
-    # u = User.find(params[:id])
-    # u.facebook.get_object("me")
-    # this will return a hash of the user's facebook information
+  end
+
+  def picture
+    @picture = GetUserFacebookPicture.call(self)
   end
 end

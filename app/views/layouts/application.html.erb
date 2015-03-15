@@ -10,9 +10,11 @@
 <body>
   <header>
     <% if current_user %>
-      Signed in as <%= current_user.first_name %> <%= current_user.last_name %>
-      <%= link_to "Sign out", signout_path, class: "sign-out" %>&nbsp;
-      <%= link_to "Profile", session_path(current_user) %>
+      <img src=<%= current_user.picture %> class="profile-picture" alt="User's profile picture">
+      <div class="profile-links">
+        <%= link_to "#{current_user.first_name} #{current_user.last_name}", session_path(current_user) %>
+        <%= link_to "Sign out", signout_path, class: "sign-out" %>&nbsp;
+      </div>
     <% else %>
       <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
     <% end %>

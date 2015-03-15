@@ -1,8 +1,10 @@
 <% if current_user %>
-  <%= link_to "Home", root_path %>
+  <%= link_to "Home", root_path %> <br>
+  <!-- facebook profile picture -->
+  <img src=<%= current_user.picture %> alt="">
+
   <p>
     <%= current_user.first_name %> <%= current_user.last_name %> is <%= @gender %>
   </p>
   <p>Email: <%= @email %></p>
-<% else %>
 <% end %>

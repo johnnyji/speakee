@@ -2,9 +2,29 @@
 
 header {
   position: relative;
-  padding: 1em;
   background-color: $test-color;
-  height: 8vh;
+  height: 50px;
+  .profile-picture {
+    position: relative;
+    @include position-y;
+    margin: 0 1em;
+    top: 50%;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+  }
+  .profile-links {
+    position: relative;
+    @include position-y;
+    display: inline-block;
+  }
+  .sign-in {
+    position: relative;
+    @include position-y;
+    top: 50%;
+    margin-left: 1em;
+  }
 }
 
 section {
