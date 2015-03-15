@@ -15,7 +15,8 @@
       <p class="body"><%= confession.body %></p>
 
       <div class="links">
-        <% if current_user %>
+        <!-- shows edit and delete only if viewing user is the poster -->
+        <% if current_user == confession.user %>
           <%= link_to "Edit", edit_confession_path(confession) %> |
           <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
         <% end %>

@@ -1,5 +1,7 @@
 class ConfessionsController < ApplicationController
   before_action :find_confession, except: [:index, :new, :create]
+  # before_action :authenticate!, except: [:index, :show]
+  # write own user authentication
 
   def index
     @confessions = Confession.all.order("created_at DESC")
@@ -9,11 +11,11 @@ class ConfessionsController < ApplicationController
   end
 
   def new
-    @confession = Confession.new
+    @confession = current_user.confessions.build
   end
 
   def create
-    @confession = Confession.create(confession_params)
+    @confession = current_user.confessions.build(confession_params)
     if @confession.save
       redirect_to action: "index"
     else
