@@ -1,27 +1,30 @@
-<h1>HELLO</h1>
+<div class="main-container">
+  <h1>HELLO</h1>
 
-<div class="create-confession-partial">
-  <%= link_to "Create new confession", new_confession_path %>
-</div>
+  <div class="create-confession-partial">
+    <%= link_to "Create new confession", new_confession_path %>
+  </div>
 
-<div class="confessions-list-container">
-  <% @confessions.each do |confession| %>
-    <div class="confession-container">
-      <h3 class="title">
-        <span class="id">#<%= confession.id %></span>
-        <%= confession.title %>
-      </h3>
-      <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
-      <p class="body"><%= confession.body %></p>
+  <div class="confessions-list-container">
+    <% @confessions.each do |confession| %>
+      <div class="confession-container">
+        <h3 class="title">
+          <span class="id">#<%= confession.id %></span>
+          <%= confession.title %>
+        </h3>
+        <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
+        <p class="body"><%= confession.body %></p>
 
-      <div class="links">
-        <!-- shows edit and delete only if viewing user is the poster -->
-        <% if current_user == confession.user %>
-          <%= link_to "Edit", edit_confession_path(confession) %> |
-          <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
-        <% end %>
+        <div class="links">
+          <!-- shows edit and delete only if viewing user is the poster -->
+          <% if current_user == confession.user %>
+            <%= link_to "Edit", edit_confession_path(confession) %> |
+            <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
+          <% end %>
+        </div>
+
       </div>
-
-    </div>
-  <% end %>
+    <% end %>
+  </div>
+  
 </div>

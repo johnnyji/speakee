@@ -11,15 +11,23 @@ class ConfessionsController < ApplicationController
   end
 
   def new
-    @confession = current_user.confessions.build
+    if current_user
+      @confession = current_user.confessions.build
+    else
+      redirect_to new_session_path #temporary fix for when no user is logged in
+    end
   end
 
   def create
-    @confession = current_user.confessions.build(confession_params)
-    if @confession.save
-      redirect_to action: "index"
+    if current_user
+      @confession = current_user.confessions.build
+      if @confession.save
+        redirect_to action: "index"
+      else
+        render "new"
+      end
     else
-      render "new"
+      redirect_to action: "index"
     end
   end
 

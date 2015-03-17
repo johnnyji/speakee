@@ -1,4 +1,8 @@
 class SessionsController < ApplicationController
+
+  def new
+  end
+
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
     @user_picture = GetUserFacebookPicture.call(@user)
