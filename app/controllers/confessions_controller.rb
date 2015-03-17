@@ -45,6 +45,7 @@ class ConfessionsController < ApplicationController
 
   ########### PRIVATE ###########
   private
+  
   def confession_params
     params.require(:confession).permit(:title, :body)
   end
@@ -52,6 +53,4 @@ class ConfessionsController < ApplicationController
   def find_confession
     @confession = Confession.find(params[:id])
   end
-
-
 end

@@ -4,26 +4,43 @@ header {
   position: relative;
   background-color: $test-color;
   height: 50px;
-  .profile-picture {
-    position: relative;
-    @include position-y;
-    margin: 0 1em;
-    top: 50%;
-    display: inline-block;
-    height: 40px;
-    width: 40px;
-    border-radius: 100%;
+  .left {
+    float: left;
+    height: 50px;
+    margin-left: 2em;
+    a {
+      position: absolute;
+      @include position-y;
+      top: 50%;
+    }
   }
-  .profile-links {
-    position: relative;
-    @include position-y;
-    display: inline-block;
-  }
-  .sign-in {
-    position: relative;
-    @include position-y;
-    top: 50%;
-    margin-left: 1em;
+
+  .right {
+    float: right;
+    height: 50px;
+    margin-right: 2em;
+    .profile-picture {
+      position: relative;
+      @include position-y;
+      margin: 0 1em;
+      top: 50%;
+      display: inline-block;
+      height: 40px;
+      width: 40px;
+      border-radius: 100%;
+    }
+    .profile-links {
+      position: relative;
+      @include position-y;
+      display: inline-block;
+      top: -5%;
+    }
+    .sign-in {
+      position: relative;
+      @include position-y;
+      top: 50%;
+      display: inline-block;
+    }
   }
 }
 

@@ -9,15 +9,20 @@
 </head>
 <body>
   <header>
-    <% if current_user %>
-      <img src=<%= current_user.picture %> class="profile-picture" alt="User's profile picture">
-      <div class="profile-links">
-        <%= link_to "#{current_user.first_name} #{current_user.last_name}", session_path(current_user) %>
-        <%= link_to "Sign out", signout_path, class: "sign-out" %>&nbsp;
-      </div>
-    <% else %>
-      <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
-    <% end %>
+    <div class="left">
+      <%= link_to "Home", root_path %>
+    </div>
+    <div class="right">
+      <% if current_user %>
+        <img src=<%= current_user.picture %> class="profile-picture" alt="User's profile picture">
+        <div class="profile-links">
+          <%= link_to "#{current_user.first_name} #{current_user.last_name}", session_path(current_user) %>
+          <%= link_to "Sign out", signout_path, class: "sign-out" %>
+        </div>
+      <% else %>
+        <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
+      <% end %>
+    </div>
   </header>
   
   <section>
