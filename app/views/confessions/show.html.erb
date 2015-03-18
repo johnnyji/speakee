@@ -1,7 +1,9 @@
-<h1><%= @confession.title %></h1>
-<p><%= @confession.body %></p>
+<div class="show-confession-container">
+  <h1>#<%= @confession.id %> <%= @confession.title %></h1>
+  <p><%= @confession.body %></p>
 
-<%= render "/comments/partials/form" %>
-<br>
-<br>
-<%= render "/comments/partials/comments" %>
+  <%= render "/comments/partials/form" %>
+  <br>
+  <br>
+  <%= render "/comments/partials/comments" %>
+</div>

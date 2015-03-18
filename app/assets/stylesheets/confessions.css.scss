@@ -11,23 +11,24 @@
   text-align: left;
   margin: 1em 0 1.5em 0;
   padding: 1.3em;
-  border-radius: 5px;
   background-color: $white;
-  .id {
-    color: #202020;
-    font-weight: normal;
-  }
   .title {
+    display: inline-block;
     font-size: 1.3em;
     letter-spacing: -0.5px;
-    margin: 0.5em 0;
+    margin: 0.3em 0;
     @include mobile-viewport {
       font-size: 1.2em;
     }
   }
+  .links {
+    display: inline-block;
+    float: right;
+    margin: 0.3em 0;
+  }
   .date {
     font-size: 0.9em;
-    margin-bottom: 2em;
+    margin: 0.5em 0 2em 0;
   }
   .body {
     margin: 0.3em 0 1em 0;
@@ -45,4 +46,14 @@
   left: 50%;
   text-align: center;
   padding: 2em 0;
+}
+
+// SHOW VIEW
+
+.show-confession-container {
+  position: relative;
+  margin: 2em 0 2em 2em;
+  padding: 1em;
+  background-color: #dbdbdb;
+  width: 60vw;
 }

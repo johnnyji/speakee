@@ -57,7 +57,6 @@ section {
     width: 60vw;
     padding: 1em;
     background-color: $test-color;
-    border-radius: 5px;
     @include medium-viewport {
       width: 80vw;
     }
