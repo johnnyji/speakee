@@ -1,0 +1,4 @@
+<%= form_for [@confession, Comment.new] do |f| %>
+  <%= f.text_area :body, placeholder: "Comment here!" %> <br>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,6 @@
+<% @confession.comments.each do |comment| %>
+  <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", session_path(comment.user) %>
+  <br>
+  <%= comment.body %>
+  <hr>
+<% end %>

@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
   provider :facebook, Rails.application.secrets.facebook_key, Rails.application.secrets.facebook_secret,
-            scope: "email", display: "popup", image_size: { width: "50", height: "50"},
+            scope: "email,birthday,gender", display: "popup", image_size: { width: "50", height: "50"},
             info_fields: "first_name,last_name,email,birthday"
 end

@@ -1,3 +1,7 @@
+<h1><%= @confession.title %></h1>
+<p><%= @confession.body %></p>
 
-  <h1><%= @confession.title %></h1>
-  <p><%= @confession.body %></p>
+<%= render "/comments/partials/form" %>
+<br>
+<br>
+<%= render "/comments/partials/comments" %>

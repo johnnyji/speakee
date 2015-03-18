@@ -8,6 +8,7 @@ class ConfessionsController < ApplicationController
   end
 
   def show
+    @comments = @confession.comments.order("created_at DESC")
   end
 
   def new
@@ -20,7 +21,7 @@ class ConfessionsController < ApplicationController
 
   def create
     if current_user
-      @confession = current_user.confessions.build
+      @confession = current_user.confessions.build(confession_params)
       if @confession.save
         redirect_to action: "index"
       else

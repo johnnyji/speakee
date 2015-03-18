@@ -8,9 +8,9 @@ class CommentsController < ApplicationController
   def create
     @comment = @confession.comments.new(comment_params)
     @comment.user_id = current_user.id
-    @comment.confesson_id = @confession.id
+    @comment.confession_id = @confession.id
     if @comment.save
-      redirect_to action: "index"
+      redirect_to confession_path(@confession)
     else
       render "new"
     end
@@ -34,6 +34,6 @@ class CommentsController < ApplicationController
   end
 
   def find_confession
-    @confession = Confession.find(params[:id])
+    @confession = Confession.find(params[:confession_id])
   end
 end

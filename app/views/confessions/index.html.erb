@@ -10,10 +10,11 @@
       <div class="confession-container">
         <h3 class="title">
           <span class="id">#<%= confession.id %></span>
-          <%= confession.title %>
+          <%= link_to confession.title, confession_path(confession) %>
         </h3>
         <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
         <p class="body"><%= confession.body %></p>
+        <p class="info"><%= link_to "#{confession.comments.count} Comments", confession_path(confession) %></p>
 
         <div class="links">
           <!-- shows edit and delete only if viewing user is the poster -->
