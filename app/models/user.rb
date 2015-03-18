@@ -8,11 +8,6 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
-      user.email = auth.info.email
-      user.birthday = auth.info.user_birthday
-      user.location = auth.info.user_location
-      user.school = auth.info.user_education_history
-      user.workplace = auth.info.user_work_history
       user.oauth_token = auth.credentials.token
       user.oauth_expiry_date = Time.at(auth.credentials.expires_at)
     end
@@ -24,5 +19,15 @@ class User < ActiveRecord::Base
 
   def picture
     @picture = GetUserFacebookPicture.call(self)
+  end
+
+  def location
+    @user_info = self.facebook.get_object("me")
+    return @user_info["location"]["name"]
+  end
+
+  def birthday
+    @user_info = self.facebook.get_object("me")
+    return @user_info["birthday"]
   end
 end
