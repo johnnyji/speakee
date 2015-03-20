@@ -1,7 +1,8 @@
 // APP WIDE
 
-html {
+body, html {
   box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
   a {
     text-decoration: none;
     &:hover, &:focus, &:visited {
@@ -12,6 +13,7 @@ html {
 
 *, *:before, *:after {
   box-sizing: inherit;
+  font-family: inherit;
 }
 
 // VIEWPORT MIXINS
@@ -69,4 +71,6 @@ html {
 
 $test-color: #dbdbdb;
 $white : #fff;
+$off-white: #ececec;
+$primary-red: #c0392b;
 $secondary-red: #e74c3c;
