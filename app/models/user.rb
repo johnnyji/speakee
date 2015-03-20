@@ -17,6 +17,10 @@ class User < ActiveRecord::Base
     @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
+  def name
+    return "#{self.first_name} #{self.last_name}"
+  end
+
   def picture
     @picture = GetUserFacebookPicture.call(self)
   end
@@ -30,4 +34,16 @@ class User < ActiveRecord::Base
     @user_info = self.facebook.get_object("me")
     return @user_info["birthday"]
   end
+
+  def gender
+    GetUserFacebookInfo.call(self)[0] #possible to get the variable name instead of using index array
+  end
+
+  # def user_info
+  #   GetUserFacebookInfo.call(self).each do |key, value|
+  #     key.gender = value[0]
+  #     key.email = value[1]
+  #   end
+  # end
+
 end
