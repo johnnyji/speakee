@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :find_confession
+  before_action :find_comment, only: [:edit, :update, :delete, :destroy]
 
   def show
   end
@@ -20,18 +21,22 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = @confession.comments.find(params[:id])
   end
 
   def update
-    @comment = @confession.comments.find(params[:id])
-    EditComment.call(@comment)
+    if @comment.update_attributes(comment_params)
+      redirect_to confession_path(@comment.confession)
+    else
+      render "new"
+    end
   end
 
   def delete
   end
 
   def destroy
+    @comment.destroy
+    redirect_to confession_path(@comment.confession)
   end
 
   private
@@ -41,5 +46,9 @@ class CommentsController < ApplicationController
 
   def find_confession
     @confession = Confession.find(params[:confession_id])
+  end
+
+  def find_comment
+    @comment = @confession.comments.find(params[:id])
   end
 end

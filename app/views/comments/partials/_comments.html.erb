@@ -1,7 +1,8 @@
 <div class="comment-container">
   <% @confession.comments.each do |comment| %>
     <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", session_path(comment.user) %>
-    <%= link_to "Edit", [comment.confession, comment.edit] %>
+    <%= link_to "Edit", edit_confession_comment_path(@confession, comment) %>
+    <%= link_to "Delete", confession_comment_path(@confession, comment), method: :delete %>
     <br>
     <%= comment.body %>
     <hr>

@@ -1,0 +1,6 @@
+<div class="main-container">
+  <%= form_for [@confession, @comment] do |f| %>
+    <%= f.text_area :body, placeholder: "Update comment" %>
+    <%= f.submit %>
+  <% end %>
+</div>

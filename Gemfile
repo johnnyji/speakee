@@ -17,6 +17,7 @@ gem 'koala', '~> 1.11.1'
 gem 'react-rails', '~> 0.13.0.0'
 
 group :development, :test do
+  gem 'capybara', '~> 2.4.4'
   gem 'rspec', '~> 3.2.0'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
