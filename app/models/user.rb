@@ -38,12 +38,4 @@ class User < ActiveRecord::Base
   def gender
     GetUserFacebookInfo.call(self)[0] #possible to get the variable name instead of using index array
   end
-
-  # def user_info
-  #   GetUserFacebookInfo.call(self).each do |key, value|
-  #     key.gender = value[0]
-  #     key.email = value[1]
-  #   end
-  # end
-
 end

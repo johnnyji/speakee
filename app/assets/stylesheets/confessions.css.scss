@@ -26,11 +26,11 @@
     @include transition;
     color: $off-white;
     letter-spacing: 0.3px;
-    background-color: $primary-red;
+    background-color: $primary-sfu;
     padding: 0.8em 1em;
     &:hover {
-      background-color: $secondary-red;
-      box-shadow: 0px 6px 0px $primary-red;
+      background-color: $secondary-sfu;
+      box-shadow: 0px 6px 0px $primary-sfu;
     }
   }
 }
@@ -63,7 +63,7 @@
     margin: 0.3em 0 1em 0;
   }
   .info {
-    color: $secondary-red;
+    color: $secondary-sfu;
   }
 }
 
