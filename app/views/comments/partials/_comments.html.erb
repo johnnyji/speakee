@@ -1,6 +1,7 @@
 <div class="comment-container">
   <% @confession.comments.each do |comment| %>
     <%= link_to "#{comment.user.first_name} #{comment.user.last_name}", session_path(comment.user) %>
+    <%= link_to "Edit", [comment.confession, comment.edit] %>
     <br>
     <%= comment.body %>
     <hr>

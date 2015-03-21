@@ -22,7 +22,13 @@
 
         <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
         <p class="body"><%= confession.body %></p>
-        <p class="info"><%= link_to pluralize(confession.comments.count, "Comment"), confession_path(confession) %></p>
+        <p class="info">
+          <% if confession.comments.count > 0 %>
+            <%= link_to "View comments (#{confession.comments.size})", confession_path(confession) %>
+          <% else %>
+            No comments
+          <% end %>
+        </p>
       </div>
     <% end %>
   </div>

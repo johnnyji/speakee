@@ -1,6 +1,9 @@
 class CommentsController < ApplicationController
   before_action :find_confession
 
+  def show
+  end
+
   def new
     @comment = @confession.comments.new(comment_params)
   end
@@ -17,9 +20,12 @@ class CommentsController < ApplicationController
   end
 
   def edit
+    @comment = @confession.comments.find(params[:id])
   end
 
   def update
+    @comment = @confession.comments.find(params[:id])
+    EditComment.call(@comment)
   end
 
   def delete
