@@ -3,7 +3,7 @@
     <%= f.text_field :title, placeholder: "Post title" %><br>
     <%= f.text_area :body, placeholder: "Post body" %><br>
     <div class="submit-button">
-      <%= f.submit %>
+      <%= f.submit, confirm: "The post can't be changed! You sure?" %>
     </div>
   <% end %>
 </div>

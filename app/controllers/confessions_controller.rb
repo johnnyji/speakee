@@ -15,24 +15,9 @@ class ConfessionsController < ApplicationController
   end
 
   def create
-    if current_user
-      @confession = current_user.confessions.build(confession_params)
-      if @confession.save
-        redirect_to action: "index"
-      else
-        render "new"
-      end
-    else
-      redirect_to action: "index"
-    end
-  end
-
-  def edit
-  end
-
-  def update
-    @confession.attributes = confession_params
-    if @confession.save(confession_params)
+    @confession = current_user.confessions.build(confession_params)
+    if @confession.save
+      ExtractHashtags.call(@confession)
       redirect_to action: "index"
     else
       render "new"
@@ -51,7 +36,7 @@ class ConfessionsController < ApplicationController
   private
   
   def confession_params
-    params.require(:confession).permit(:title, :body)
+    params.require(:confession).permit(:title, :body, :hashtag_list)
   end
 
   def find_confession
