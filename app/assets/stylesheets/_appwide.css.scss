@@ -56,6 +56,7 @@ $text-color: #202020;
 $white : #fff;
 $off-white: #ececec;
 $gray: #BFBFBF;
+$dark-gray: #3e3935;
 $link-color: #7f8c8d;
 $link-hover-color: #2980b9;
 $primary-sfu: #c0392b;
@@ -74,13 +75,8 @@ body, html {
   font-family: inherit;
   a {
     text-decoration: none;
-    color: $link-color;
-    &:hover, &:focus {
+    &:hover, &:focus, &:active, &:visited {
       text-decoration: none;
-      color: $link-hover-color;
-    }
-    &:visited {
-      color: $link-color;
     }
   }
 }

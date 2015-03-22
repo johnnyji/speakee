@@ -9,7 +9,8 @@
 .page-title {
   text-align: center;
   font-size: 2.3em;
-  color: $off-white;
+  color: $white;
+  text-shadow: 2px 3px 0px $primary-sfu;
   margin: 1em 0;
   @include medium-viewport {
     font-size: 2em;
@@ -25,6 +26,7 @@
   a {
     @include transition;
     letter-spacing: 0.3px;
+    color: $white;
     background-color: $primary-sfu;
     padding: 0.8em 1em;
     &:hover {
@@ -40,14 +42,17 @@
   margin: 1em 0 1.5em 0;
   padding: 1.3em;
   background-color: $white;
+  @include medium-viewport {
+    font-size: 90%;
+  }
+  @include mobile-viewport {
+    font-size: 85%;
+  }
   .title {
     display: inline-block;
     font-size: 1.3em;
     letter-spacing: -0.5px;
     margin: 0.3em 0;
-    @include mobile-viewport {
-      font-size: 1.2em;
-    }
   }
   .links {
     display: inline-block;
@@ -60,12 +65,15 @@
   }
   .body {
     margin: 0.3em 0 1em 0;
+    a, a:visited {
+      color: $link-color;
+      &:hover, &:active, &:focus {
+        color: $link-hover-color;
+      }
+    }
   }
   .info {
     color: $text-color;
-    a:hover {
-      color: $link-hover-color;
-    }
   }
 }
 

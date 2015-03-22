@@ -28,7 +28,4 @@ class Confession < ActiveRecord::Base
     hashtag_regex = /(?:\s|^)(?:#(?!\d+(?:\s|$)))(\w+)(?=\s|$)/i
     hashtag_array = self.body.scan(hashtag_regex).flatten.uniq
   end
-
-  private
-
 end
