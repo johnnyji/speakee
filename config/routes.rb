@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :confessions do
     resources :comments
   end
-  
+  resources :hashtags
   resources :sessions
 
   match "/auth/facebook/callback", to: "sessions#create", as: "signin", via: :get
