@@ -57,7 +57,7 @@
   .links {
     display: inline-block;
     float: right;
-    margin: 0.3em 0;
+    margin: 0.3em 0.3em 0 0;
   }
   .date {
     font-size: 0.9em;
@@ -74,6 +74,21 @@
   }
   .info {
     color: $text-color;
+  }
+  .male {
+    color: #3A539B;
+    font-weight: bolder;
+    font-size: 1.25em;
+  }
+  .female {
+    color: #D24D57;
+    font-weight: bolder;
+    font-size: 1.25em;
+  }
+  .transgender {
+    color: #16A085;
+    font-weight: bolder;
+    font-size: 1.25em;
   }
 }
 

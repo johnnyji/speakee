@@ -1,0 +1,34 @@
+<% @confessions.each do |confession| %>
+  <div class="confession-container">
+    <h3 class="title">
+      <%= "##{confession.id}" %>
+      <%= link_to "#{confession.title}", confession_path(confession) %>
+    </h3>
+
+    <div class="links">
+      <% if current_user == confession.user %>
+        <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
+      <% else %>
+
+        <% if confession.user.gender == "male" %>
+          <i class="fa fa-mars male male"></i>
+        <% elsif confession.user.gender == "female" %>
+          <i class="fa fa-venus female female"></i>
+        <% else %>
+          <i class="fa fa-transgender transgender"></i>
+        <% end %>
+
+      <% end %>
+    </div>
+
+    <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
+    <p class="body"><%= confession.body.html_safe %></p>
+    <p class="info">
+      <% if confession.comments.count > 0 %>
+        <%= link_to "View comments (#{confession.comments.size})", confession_path(confession) %>
+      <% else %>
+        No comments
+      <% end %>
+    </p>
+  </div>
+<% end %>

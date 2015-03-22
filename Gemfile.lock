@@ -67,6 +67,8 @@ GEM
     execjs (2.4.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
+    font-awesome-sass (4.3.2.1)
+      sass (~> 3.2)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
     hashie (3.4.0)
@@ -217,6 +219,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.4.4)
   coffee-rails (~> 4.1.0)
+  font-awesome-sass (~> 4.3.2.1)
   jbuilder (~> 2.0)
   jquery-rails
   koala (~> 1.11.1)

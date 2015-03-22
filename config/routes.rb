@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'hashtags/show'
+
   root "confessions#index"
 
   resources :confessions do

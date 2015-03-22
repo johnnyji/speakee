@@ -1,7 +1,6 @@
 class Confession < ActiveRecord::Base
   belongs_to :user
   has_many :comments
-
   has_many :taggings
   has_many :hashtags, through: :taggings, dependent: :destroy
   
