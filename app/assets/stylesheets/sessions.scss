@@ -8,3 +8,24 @@
   top: 45%;
   left: 50%;
 }
+
+// SHOW SESSION
+
+.user-info-container {
+  display: inline-block;
+  position: relative;
+  margin: 1em 2em;
+  padding: 1em;
+  background-color: $test-color;
+  .profile-picture {
+    height: 180px;
+    width: 180px;
+  }
+  .name {
+    position: relative;
+    width: 180px;
+    overflow: auto; 
+    font-weight: bold;
+    font-size: 1.3em;
+  }
+}

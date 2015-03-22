@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
     @picture = GetUserFacebookPicture.call(self)
   end
 
+  def large_picture
+    self.facebook.get_picture("me", type: "large")
+  end
+
   def location
     @user_info = self.facebook.get_object("me")
     return @user_info["location"]["name"]

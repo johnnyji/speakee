@@ -1,11 +1,9 @@
 <% if current_user %>
-  <%= link_to "Home", root_path %> <br>
-  <!-- facebook profile picture -->
-  <img src=<%= current_user.picture %> alt="">
-
-  <p>
-    <%= current_user.name %> is <%= current_user.gender %>
-  </p>
-  <p><%= current_user.location %></p>
-  <p>Email: <%= @email %></p>
+  <div class="user-info-container">
+    <!-- facebook profile picture -->
+    <img src=<%= current_user.large_picture %> alt="" class="profile-picture">
+    <p class="name"> sgkshksdgoisghjlfghoflsgsnvkjnvkvb,dfvnkdzbvksdvnlsabvkfsbn,dsnv ksvbkfs </p>
+    <p><%= current_user.location %></p>
+    <p>Email: <%= @email %></p>
+  </div>
 <% end %>

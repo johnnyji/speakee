@@ -17,7 +17,7 @@ class ConfessionsController < ApplicationController
   def create
     @confession = current_user.confessions.build(confession_params)
     @confession.hashtags = CreateHashtags.call(@confession)
-    EmbedHashtags.call(@confession.hashtags, @confession.body)
+    embed_hashtags(@confession.hashtags, @confession.body)
     if @confession.save
       redirect_to action: "index"
     else
@@ -33,7 +33,9 @@ class ConfessionsController < ApplicationController
     redirect_to action: "index"
   end
 
-  ########### PRIVATE ###########
+  ################################
+  ########### PRIVATE ############
+  ################################
   private
   
   def confession_params
@@ -42,5 +44,12 @@ class ConfessionsController < ApplicationController
 
   def find_confession
     @confession = Confession.find(params[:id])
+  end
+
+  def embed_hashtags(hashtags, body)
+    hashtags.each do |hashtag|
+      matched_tag = body.scan("##{hashtag.tag}").flatten.uniq.join("")
+      body.gsub!(matched_tag, view_context.link_to("##{hashtag.tag}", hashtag_path(hashtag)))
+    end
   end
 end
