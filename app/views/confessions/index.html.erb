@@ -20,6 +20,12 @@
         </div>
 
         <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
+       <!--  JUST FOR EDITING PURPOSES -->
+        <p>
+          <% confession.hashtag_list.each do |tag| %>
+           <%= "##{tag}" %>
+          <% end %>
+        </p>
         <p class="body"><%= confession.body %></p>
         <p class="info">
           <% if confession.comments.count > 0 %>

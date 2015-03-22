@@ -17,7 +17,7 @@ class ConfessionsController < ApplicationController
   def create
     @confession = current_user.confessions.build(confession_params)
     if @confession.save
-      ExtractHashtags.call(@confession)
+      @confession.hashtags = CreateHashtags.call(@confession)
       redirect_to action: "index"
     else
       render "new"
