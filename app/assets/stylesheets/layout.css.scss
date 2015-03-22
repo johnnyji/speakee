@@ -2,7 +2,7 @@
 
 header {
   position: relative;
-  background-color: $test-color;
+  background-color: $background-color;
   height: 50px;
   .left {
     float: left;
@@ -56,7 +56,7 @@ section {
     height: auto;
     width: 60vw;
     padding: 1em;
-    background-color: $tertiary-sfu;
+    background-color: $background-color;
     @include medium-viewport {
       width: 80vw;
     }
@@ -68,7 +68,7 @@ section {
 }
 
 footer {
-  background-color: $test-color;
+  background-color: $background-color;
   min-height: 8vh;
   height: auto;
   padding: 1em;

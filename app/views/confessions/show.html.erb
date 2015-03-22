@@ -1,6 +1,6 @@
 <div class="show-confession-container">
   <h1>#<%= @confession.id %> <%= @confession.title %></h1>
-  <p><%= @confession.body %></p>
+  <p><%= @confession.body.html_safe %></p>
 
   <%= render "/comments/partials/form" %>
   <br>

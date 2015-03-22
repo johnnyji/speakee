@@ -9,7 +9,8 @@
     <% @confessions.each do |confession| %>
       <div class="confession-container">
         <h3 class="title">
-          <%= link_to "##{confession.id} #{confession.title}", confession_path(confession) %>
+          <%= "##{confession.id}" %>
+          <%= link_to "#{confession.title}", confession_path(confession) %>
         </h3>
 
         <div class="links">
@@ -20,7 +21,7 @@
         </div>
 
         <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
-        <p class="body"><%= (confession.body).html_safe %></p>
+        <p class="body"><%= confession.body.html_safe %></p>
         <p class="info">
           <% if confession.comments.count > 0 %>
             <%= link_to "View comments (#{confession.comments.size})", confession_path(confession) %>

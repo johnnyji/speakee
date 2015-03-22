@@ -24,7 +24,6 @@
   text-align: center;
   a {
     @include transition;
-    color: $off-white;
     letter-spacing: 0.3px;
     background-color: $primary-sfu;
     padding: 0.8em 1em;
@@ -63,7 +62,10 @@
     margin: 0.3em 0 1em 0;
   }
   .info {
-    color: $secondary-sfu;
+    color: $text-color;
+    a:hover {
+      color: $link-hover-color;
+    }
   }
 }
 
