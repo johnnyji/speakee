@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
 
   def show #profile page
     @user = User.find(params[:id])
+    @confessions = @user.confessions.order("created_at DESC")
     @gender, @email = GetUserFacebookInfo.call(@user)
   end
 

@@ -6,4 +6,8 @@
     <p><%= current_user.location %></p>
     <p>Email: <%= @email %></p>
   </div>
+
+  <div class="user-confession-container">
+    <%= render "/confessions/partials/confession" %>
+  </div>
 <% end %>

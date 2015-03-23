@@ -14,12 +14,12 @@
 .user-info-container {
   display: inline-block;
   position: relative;
+  float: left;
   margin: 1em 2em;
   padding: 1em;
   background-color: $test-color;
   .profile-picture {
-    height: 180px;
-    width: 180px;
+    margin: 0 auto;
   }
   .name {
     position: relative;
@@ -28,4 +28,13 @@
     font-weight: bold;
     font-size: 1.3em;
   }
+}
+
+.user-confession-container {
+  display: inline-block;
+  position: relative;
+  width: 50vw;
+  background-color: $test-color;
+  padding: 1em;
+  margin: 1em 2em;
 }
