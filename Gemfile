@@ -20,6 +20,7 @@ gem 'font-awesome-sass', '~> 4.3.2.1'
 group :development, :test do
   gem 'capybara', '~> 2.4.4'
   gem 'rspec-rails', '~> 3.2.1'
+  gem 'rspec-nc', '~> 0.2.0'
   gem 'guard-rspec', '~> 4.5.0'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
