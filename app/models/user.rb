@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
       user.gender = auth.extra.raw_info.gender
+      user.email = auth.extra.raw_info.email
       user.birthday = auth.extra.raw_info.birthday
       user.education_history = auth.extra.raw_info.education.last.school.name
       user.oauth_token = auth.credentials.token
