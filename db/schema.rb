@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150321061713) do
+ActiveRecord::Schema.define(version: 20150324002925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,16 +56,15 @@ ActiveRecord::Schema.define(version: 20150321061713) do
     t.string   "uid"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expiry_date"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "birthday"
     t.string   "email"
-    t.string   "oauth_token"
-    t.datetime "oauth_expiry_date"
-    t.string   "picture"
-    t.string   "education_history"
     t.string   "gender"
     t.string   "location"
+    t.string   "education_history"
   end
 
   add_foreign_key "taggings", "confessions"

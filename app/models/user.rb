@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :confessions
+  has_many :confessions, dependent: :destroy
   has_many :comments
 
   def self.from_omniauth(auth)
@@ -8,8 +8,12 @@ class User < ActiveRecord::Base
       user.uid = auth.uid
       user.first_name = auth.info.first_name
       user.last_name = auth.info.last_name
+      user.gender = auth.extra.raw_info.gender
+      user.birthday = auth.extra.raw_info.birthday
+      user.education_history = auth.extra.raw_info.education.last.school.name
       user.oauth_token = auth.credentials.token
       user.oauth_expiry_date = Time.at(auth.credentials.expires_at)
+      user.save!
     end
   end
 
@@ -37,9 +41,5 @@ class User < ActiveRecord::Base
   def birthday
     @user_info = self.facebook.get_object("me")
     return @user_info["birthday"]
-  end
-
-  def gender
-    GetUserFacebookInfo.call(self)[0] #possible to get the variable name instead of using index array
   end
 end
