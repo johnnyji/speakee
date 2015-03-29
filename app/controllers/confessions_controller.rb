@@ -1,4 +1,5 @@
 class ConfessionsController < ApplicationController
+  before_filter :require_user, only: [:index]
   before_action :find_confession, except: [:index, :new, :create]
   before_action :authenticate_user, except: [:index, :show]
 
@@ -52,5 +53,9 @@ class ConfessionsController < ApplicationController
       matched_tag = body.scan("##{hashtag.tag}").flatten.uniq.join("")
       body.gsub!(matched_tag, view_context.link_to("##{hashtag.tag}", hashtag_path(hashtag)))
     end
+  end
+
+  def require_user
+    redirect_to new_session_path unless current_user
   end
 end

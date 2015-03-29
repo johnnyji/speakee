@@ -2,7 +2,8 @@
   <div class="user-info-container">
     <!-- facebook profile picture -->
     <img src=<%= current_user.large_picture %> alt="" class="profile-picture">
-    <p class="name"> sgkshksdgoisghjlfghoflsgsnvkjnvkvb,dfvnkdzbvksdvnlsabvkfsbn,dsnv ksvbkfs </p>
+    <p class="name"><%= current_user.name %></p>
+    <p><%= current_user.school.name %></p>
     <p><%= current_user.location %></p>
     <p>Email: <%= @email %></p>
   </div>
