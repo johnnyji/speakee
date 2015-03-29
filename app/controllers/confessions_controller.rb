@@ -16,6 +16,7 @@ class ConfessionsController < ApplicationController
 
   def create
     @confession = current_user.confessions.build(confession_params)
+    @confession.school_id = current_user.school_id
     @confession.hashtags = CreateHashtags.call(@confession)
     embed_hashtags(@confession.hashtags, @confession.body)
     if @confession.save
@@ -39,7 +40,7 @@ class ConfessionsController < ApplicationController
   private
   
   def confession_params
-    params.require(:confession).permit(:title, :body, :hashtag_list)
+    params.require(:confession).permit(:title, :body, :hashtag_list, :school_id)
   end
 
   def find_confession

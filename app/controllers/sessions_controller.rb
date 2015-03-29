@@ -5,9 +5,8 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
-    @user.school_id = @school.id
     session[:user_id] = @user.id
-    redirect_to root_path
+    redirect_to find_or_create_school_path
   end
 
   def show #profile page
@@ -19,5 +18,7 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
 
 end
