@@ -18,9 +18,8 @@
     </div>
     <div class="right">
       <% if current_user %>
-        <img src=<%= current_user.picture %> class="profile-picture" alt="User's profile picture">
+        <%= link_to image_tag(current_user.picture, class: "profile-picture"), session_path(current_user) %>
         <div class="profile-links">
-          <%= link_to "#{current_user.first_name} #{current_user.last_name}", session_path(current_user) %>
           <%= link_to "Sign out", signout_path, class: "sign-out" %>
         </div>
       <% else %>
