@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
       user.gender = auth.extra.raw_info.gender
       user.email = auth.extra.raw_info.email
       user.birthday = auth.extra.raw_info.birthday
+      user.timezone = auth.extra.raw_info.timezone
       user.education_history = auth.extra.raw_info.education.last.school.name
       user.oauth_token = auth.credentials.token
       user.oauth_expiry_date = Time.at(auth.credentials.expires_at)

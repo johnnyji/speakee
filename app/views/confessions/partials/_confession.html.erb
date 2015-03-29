@@ -21,7 +21,7 @@
       <% end %>
     </div>
 
-    <p class="date"><%= confession.created_at.strftime("%B %d, %Y") %></p>
+    <p class="date"><%= confession.created_at.in_time_zone(confession.user.timezone).strftime("%B %d, %Y") %></p>
     <p class="body"><%= confession.body.html_safe %></p>
     <p class="info">
       <% if confession.comments.count > 0 %>
