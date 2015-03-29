@@ -4,7 +4,8 @@ class ConfessionsController < ApplicationController
   before_action :authenticate_user, except: [:index, :show]
 
   def index
-    @confessions = Confession.all.order("created_at DESC")
+    # shows every confession that belongs to the school the user belongs to
+    @confessions = Confession.where(school_id: current_user.school_id).order("created_at DESC")
   end
 
   def show
