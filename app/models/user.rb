@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :confessions, dependent: :destroy
   has_many :comments
+  belongs_to :school
+
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
@@ -37,10 +39,5 @@ class User < ActiveRecord::Base
   def location
     @user_info = self.facebook.get_object("me")
     return @user_info["location"]["name"]
-  end
-
-  def birthday
-    @user_info = self.facebook.get_object("me")
-    return @user_info["birthday"]
   end
 end

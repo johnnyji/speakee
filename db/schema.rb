@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324002925) do
+ActiveRecord::Schema.define(version: 20150329022739) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,20 @@ ActiveRecord::Schema.define(version: 20150324002925) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
+    t.integer  "school_id"
   end
 
   create_table "hashtags", force: :cascade do |t|
     t.string   "tag"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "schools", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "taggings", force: :cascade do |t|
@@ -65,6 +73,7 @@ ActiveRecord::Schema.define(version: 20150324002925) do
     t.string   "gender"
     t.string   "location"
     t.string   "education_history"
+    t.integer  "school_id"
   end
 
   add_foreign_key "taggings", "confessions"

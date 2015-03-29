@@ -1,8 +1,10 @@
 class Confession < ActiveRecord::Base
   belongs_to :user
+  belongs_to :school
   has_many :comments, dependent: :destroy
   has_many :taggings
   has_many :hashtags, through: :taggings, dependent: :destroy
+
   
   validates :title, presence: true, uniqueness: true #write custom error message
   validates :body, presence: true
