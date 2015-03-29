@@ -8,9 +8,4 @@ class School < ActiveRecord::Base
       school.save!
     end
   end
-
-  def self.abbreviate_name
-    abbreviate = name.gsub!(abbreviation_regex, "")
-    abbreviate.gsub!(/\s+/, "")
-  end
 end

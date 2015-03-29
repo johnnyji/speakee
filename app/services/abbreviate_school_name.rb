@@ -7,7 +7,7 @@ class AbbreviateSchoolName
   end
 
   def call
-    abbreviate = @school.gsub!(@abbreviation_regex, "")
-    abbreviate.gsub!(/\s+/, "")
+    abbreviate = @school.gsub(@abbreviation_regex, "")
+    abbreviate.gsub(/\s+/, "")
   end
 end

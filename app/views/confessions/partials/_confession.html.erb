@@ -1,8 +1,8 @@
 <% @confessions.each do |confession| %>
   <div class="confession-container">
     <h3 class="title">
-      <%= "##{confession.id}" %>
-      <%= link_to "#{confession.title}", confession_path(confession) %>
+      <%= link_to " ##{confession.id} #{confession.title}", confession_path(confession) %> -
+      <%= confession.school.name if confession.school %>
     </h3>
 
     <div class="links">
