@@ -1,5 +1,5 @@
 <div class="show-confession-container">
-  <h1>#<%= @confession.id %> <%= @confession.title %></h1>
+  <h1><%= @confession.title %></h1>
   <p class="date"><%= @confession.created_at.in_time_zone(@confession.user.timezone).strftime("%B %d, %Y") %></p>
   <p><%= @confession.body.html_safe %></p>
   

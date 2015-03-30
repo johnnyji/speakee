@@ -3,7 +3,7 @@ class School < ActiveRecord::Base
   has_many :confessions
 
   def self.from_user(user)
-    self.where(name: user.education_history).first_or_initialize.tap do |school|
+    where(name: user.education_history).first_or_initialize.tap do |school|
       school.name = user.education_history
       school.save!
     end

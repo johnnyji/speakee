@@ -1,7 +1,7 @@
 <% @confessions.each do |confession| %>
   <div class="confession-container">
     <h3 class="title">
-      <%= link_to " ##{confession.id} #{confession.title}", confession_path(confession) %>
+      <%= link_to confession.title, confession_path(confession) %>
     </h3>
 
     <div class="links">

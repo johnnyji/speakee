@@ -13,7 +13,7 @@ class SchoolsController < ApplicationController
     if @school.save
       redirect_to user_school_path
     else
-      render "new"
+      redirect_to root_path
     end
   end
 end
