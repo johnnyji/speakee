@@ -6,7 +6,7 @@ class SchoolsController < ApplicationController
   end
 
   def create
-    @user = current_user || User.find(params[:id])
+    @user = current_user
     @school = School.from_user(@user)
     @school.abbreviation = AbbreviateSchoolName.call(@school.name)
     @user.update!(school_id: @school.id)
