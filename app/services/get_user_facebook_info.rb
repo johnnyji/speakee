@@ -14,6 +14,6 @@ class GetUserFacebookInfo
     user_info = @user.facebook.get_object("me")
     gender = user_info["gender"]
     email = user_info["email"]
-    [gender, email]
+    { gender: gender, email: email }
   end
 end

@@ -6,18 +6,19 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
-      user.provider = auth.provider
-      user.uid = auth.uid
-      user.first_name = auth.info.first_name
-      user.last_name = auth.info.last_name
-      user.gender = auth.extra.raw_info.gender
-      user.email = auth.extra.raw_info.email
-      user.birthday = auth.extra.raw_info.birthday
-      user.timezone = auth.extra.raw_info.timezone
-      user.education_history = auth.extra.raw_info.education.last.school.name
-      user.oauth_token = auth.credentials.token
-      user.oauth_expiry_date = Time.at(auth.credentials.expires_at)
-      user.save!
+      user.update_attributes(
+        provider: auth.provider,
+        uid: auth.uid,
+        first_name: auth.info.first_name,
+        last_name: auth.info.last_name,
+        gender: auth.extra.raw_info.gender,
+        email: auth.extra.raw_info.email,
+        birthday: auth.extra.raw_info.birthday,
+        timezone: auth.extra.raw_info.timezone,
+        education_history: auth.extra.raw_info.education.last.school.name,
+        oauth_token: auth.credentials.token,
+        oauth_expiry_date: Time.at(auth.credentials.expires_at)
+      )
     end
   end
 
