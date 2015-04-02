@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_many :comments
   belongs_to :school
 
-
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.update_attributes(
@@ -21,6 +20,10 @@ class User < ActiveRecord::Base
       )
     end
   end
+
+  # def already_likes?(confession)
+  #   self.likes
+  # end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
