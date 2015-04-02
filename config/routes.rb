@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'hashtags/show'
 
+  # if user is logged in, root to user_school, else root to confession#index
   root "confessions#index"
 
   resources :confessions do
