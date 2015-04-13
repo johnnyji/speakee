@@ -8,5 +8,6 @@
   <div class="confessions-list-container">
     <%= render "schools/partials/confession" %>
   </div>
-  
+
+  <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
 </div>

@@ -10,13 +10,13 @@
         <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
       <% else %>
 
-        <% if confession.user.gender == "male" %>
-          <i class="fa fa-mars male male"></i>
-        <% elsif confession.user.gender == "female" %>
-          <i class="fa fa-venus female female"></i>
-        <% else %>
-          <i class="fa fa-transgender transgender"></i>
-        <% end %>
+      <% if confession.user.gender == "male" %>
+        <i class="fa fa-mars male male"></i>
+      <% elsif confession.user.gender == "female" %>
+        <i class="fa fa-venus female female"></i>
+      <% else %>
+        <i class="fa fa-transgender transgender"></i>
+      <% end %>
 
       <% end %>
     </div>

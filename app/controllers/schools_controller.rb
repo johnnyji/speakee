@@ -2,7 +2,7 @@ class SchoolsController < ApplicationController
 
   def show
     @school = current_user.school
-    @confessions = @school.confessions.all.order("created_at DESC")
+    @confessions = @school.confessions.order("created_at DESC").page(params[:page]).per_page(10)
   end
 
   def create
