@@ -4,7 +4,8 @@
     <img src=<%= current_user.large_picture %> alt="" class="profile-picture">
     <p class="name"><%= current_user.name %></p>
       <% current_user.schools.each do |school| %>
-        <p><%= school.name %></p>
+
+        <%= link_to "#{school.name}", switch_school_path(school.id) %>
       <% end %>
     <p><%= current_user.location %></p>
     <p>Email: <%= current_user.email %></p>

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :school_users
   has_many :schools, through: :school_users
-
+  
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
       user.update_attributes(
@@ -16,27 +16,23 @@ class User < ActiveRecord::Base
         birthday: auth.extra.raw_info.birthday,
         timezone: auth.extra.raw_info.timezone,
         education_history: parse_school_names(auth.extra.raw_info.education),
+        current_school: auth.extra.raw_info.education.last.school.name,
         oauth_token: auth.credentials.token,
         oauth_expiry_date: Time.at(auth.credentials.expires_at)
       )
     end
   end
 
-  def school_name_array
-    self.schools.map { |school| school.name }
-  end
-
-  def current_school
-    self.schools.last || nil
-    #make this default to the last school but can be adjusted based on the users input
+  def selected_school
+    self.schools.find_by_name(self.current_school)
   end
 
   def education_history_array
     eval(self.education_history).uniq
   end
 
-  def facebook
-    @facebook ||= Koala::Facebook::API.new(oauth_token)
+  def school_name_array
+    self.schools.map { |school| school.name }
   end
 
   def name
@@ -44,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def picture
-    @picture = GetUserFacebookPicture.call(self)
+    self.facebook.get_picture('me')
   end
 
   def large_picture
@@ -53,7 +49,11 @@ class User < ActiveRecord::Base
 
   def location
     @user_info = self.facebook.get_object("me")
-    return @user_info["location"]["name"]
+    @user_info["location"]["name"]
+  end
+
+  def facebook
+    @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
   private
@@ -73,7 +73,7 @@ class User < ActiveRecord::Base
       else 
         h[k] = v
       end
-     end
+    end
   end
 
 

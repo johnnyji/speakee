@@ -1,14 +1,21 @@
 class SchoolsController < ApplicationController
 
   def show
-    @school = current_user.current_school
-    #this will automatically throw you to the last school on your school list, make a dropdown for the user to have more options to access more schools
+    raise params.to_yaml #this shows the content being passed is "3", and finding the current_user.schools.find(3) in the console finds the school, so why doesn't this method do it?
+    @school = current_user.schools.find(params[:id])
+    #WHY IS THIS NOT FINDING THE SCHOOL BY THE ID?
     @confessions = @school.confessions.order("created_at DESC").page(params[:page]).per_page(10)
   end
 
   def create
     School.from_user(current_user)
-    # current_user.current_school = current_user.schools.last
+    redirect_to user_school_path(current_user.selected_school.id)
+    binding.pry
+  end
+
+  def switch
+    @school = current_user.schools.find(params[:id])
+    current_user.switch_school(@school)
     redirect_to user_school_path
   end
 end
