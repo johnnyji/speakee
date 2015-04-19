@@ -6,10 +6,10 @@ class SessionsController < ApplicationController
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
-    if @user.school
-      redirect_to user_school_path
+    if @user.school_name_array.sort == @user.education_history_array.sort #aka if the user's schools are still the same
+      redirect_to(user_school_path)
     else
-      redirect_to find_or_create_school_path
+      redirect_to(find_or_create_school_path)
     end
   end
 

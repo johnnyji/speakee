@@ -5,7 +5,7 @@ class ConfessionsController < ApplicationController
 
   def index
     # shows every confession that belongs to the school the user belongs to
-    @confessions = Confession.where(school_id: current_user.school_id).order("created_at DESC")
+    @confessions = Confession.all.order("created_at DESC")
   end
 
   def show
@@ -18,7 +18,7 @@ class ConfessionsController < ApplicationController
 
   def create
     @confession = current_user.confessions.build(confession_params)
-    @confession.school_id = current_user.school_id
+    @confession.school_id = current_user.current_school.id
     @confession.hashtags = CreateHashtags.call(@confession)
     embed_hashtags(@confession.hashtags, @confession.body)
     if @confession.save

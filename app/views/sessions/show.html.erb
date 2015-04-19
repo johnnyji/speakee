@@ -3,7 +3,9 @@
     <!-- facebook profile picture -->
     <img src=<%= current_user.large_picture %> alt="" class="profile-picture">
     <p class="name"><%= current_user.name %></p>
-    <p><%= current_user.school.name %></p>
+      <% current_user.schools.each do |school| %>
+        <p><%= school.name %></p>
+      <% end %>
     <p><%= current_user.location %></p>
     <p>Email: <%= current_user.email %></p>
   </div>

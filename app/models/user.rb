@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :confessions, dependent: :destroy
   has_many :comments
-  belongs_to :school
+  has_many :school_users
+  has_many :schools, through: :school_users
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap do |user|
@@ -14,23 +15,32 @@ class User < ActiveRecord::Base
         email: auth.extra.raw_info.email,
         birthday: auth.extra.raw_info.birthday,
         timezone: auth.extra.raw_info.timezone,
-        education_history: auth.extra.raw_info.education.last.school.name,
+        education_history: parse_school_names(auth.extra.raw_info.education),
         oauth_token: auth.credentials.token,
         oauth_expiry_date: Time.at(auth.credentials.expires_at)
       )
     end
   end
 
-  # def already_likes?(confession)
-  #   self.likes
-  # end
+  def school_name_array
+    self.schools.map { |school| school.name }
+  end
+
+  def current_school
+    self.schools.last || nil
+    #make this default to the last school but can be adjusted based on the users input
+  end
+
+  def education_history_array
+    eval(self.education_history).uniq
+  end
 
   def facebook
     @facebook ||= Koala::Facebook::API.new(oauth_token)
   end
 
   def name
-    return "#{self.first_name} #{self.last_name}"
+    "#{self.first_name} #{self.last_name}"
   end
 
   def picture
@@ -45,4 +55,26 @@ class User < ActiveRecord::Base
     @user_info = self.facebook.get_object("me")
     return @user_info["location"]["name"]
   end
+
+  private
+
+  def self.parse_school_names(education_history)
+    education_history.map do |hash|
+      flatten_hash(hash)
+    end.map { |school| school[:"school.name"] }
+  end
+
+  def self.flatten_hash(hash)
+    hash.each_with_object({}) do |(k, v), h|
+      if v.is_a? Hash
+        flatten_hash(v).map do |h_k, h_v|
+          h["#{k}.#{h_k}".to_sym] = h_v
+        end
+      else 
+        h[k] = v
+      end
+     end
+  end
+
+
 end
