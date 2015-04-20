@@ -2,7 +2,7 @@
   <div class="confession-container">
     <h3 class="title">
       <%= link_to confession.title, confession_path(confession) %> -
-      <%= link_to confession.school.name, user_school_path(confession.school.id) %>
+      <%= link_to confession.school.name, school_path(confession.school) %>
     </h3>
 
     <div class="links">

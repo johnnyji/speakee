@@ -7,8 +7,7 @@ class SessionsController < ApplicationController
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
     if @user.school_name_array.sort == @user.education_history_array.sort #aka if the user's schools are still the same
-      binding.pry
-      redirect_to(user_school_path(@user.selected_school.id))
+      redirect_to(school_path(@user.selected_school))
     else
       redirect_to(find_or_create_school_path)
     end
