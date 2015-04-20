@@ -18,11 +18,11 @@ class ConfessionsController < ApplicationController
 
   def create
     @confession = current_user.confessions.build(confession_params)
-    @confession.school_id = current_user.current_school.id
+    @confession.school_id = current_user.selected_school.id
     @confession.hashtags = CreateHashtags.call(@confession)
     embed_hashtags(@confession.hashtags, @confession.body)
     if @confession.save
-      redirect_to action: "index"
+      redirect_to school_path(@confession.school)
     else
       render "new"
     end
