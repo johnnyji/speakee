@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   resources :confessions do
     resources :comments
   end
+
   resources :hashtags
   resources :sessions
-  resources :schools 
+  
+  resources :schools do
+    resources :confessions, only: [:new, :create]
+  end
 
   match "switch_school", to: "schools#switch", as: "switch_school", via: :get
   match "find_or_create_school", to: "schools#create", as: "find_or_create_school", via: :get

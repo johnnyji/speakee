@@ -2,7 +2,7 @@
   <h1 class="page-title"><%= @school.name %> Confessions</h1>
   
   <div class="create-confession">
-    <%= link_to "Write a confession", new_confession_path %>
+    <%= link_to "Write a confession", new_school_confession_path(@school) %>
   </div>
 
   <div class="confessions-list-container">
