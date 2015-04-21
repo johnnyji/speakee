@@ -21,7 +21,6 @@ class ConfessionsController < ApplicationController
     @confession = current_user.confessions.build(confession_params)
     @confession.hashtags = CreateHashtags.call(@confession)
     embed_hashtags(@confession.hashtags, @confession.body)
-    binding.pry
     if @confession.save
       redirect_to school_path(@confession.school)
     else
