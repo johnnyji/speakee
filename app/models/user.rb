@@ -23,10 +23,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def selected_school
-    self.schools.find_by_name(self.current_school)
-  end
-
   def education_history_array
     eval(self.education_history).uniq
   end

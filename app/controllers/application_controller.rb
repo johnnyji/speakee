@@ -21,8 +21,8 @@ class ApplicationController < ActionController::Base
 
   # redirects the logged in user to their school if they have a school
   before_action do
-    if logged_in? && current_user.selected_school
-      redirect_to school_path(current_user.selected_school) if request.fullpath == root_path
+    if logged_in? && current_user.schools.last
+      redirect_to school_path(current_user.schools.last) if request.fullpath == root_path
     end
   end
 
