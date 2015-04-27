@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def active_school(user)
+    @active_school = user.active_school.exists? ? user.active_school : user.schools.last
+  end
+
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     rescue ActiveRecord::RecordNotFound

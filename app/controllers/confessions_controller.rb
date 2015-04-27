@@ -1,6 +1,7 @@
 class ConfessionsController < ApplicationController
   before_filter :require_user, only: [:index]
-  before_action :find_confession, except: [:index, :new, :create]
+  before_action :find_school, only: [:new, :delete, :destroy ]
+  before_action :find_confession, only: [:show]
   before_action :authenticate_user, except: [:index, :show]
 
   def index
@@ -28,12 +29,18 @@ class ConfessionsController < ApplicationController
     end
   end
 
-  def delete
-  end
+  # def delete
+  #   @confession = @school.confessions.find(params[:id])
+  # end
 
   def destroy
+    @confession = @school.confessions.find(params[:id])
     @confession.destroy
-    redirect_to action: "index"
+    redirect_to school_path(@school)
+      # respond_to do |format|
+      #   format.html { redirect_to school_path(@confession) }
+      #   format.js {}
+      # end
   end
 
   ################################
@@ -43,6 +50,10 @@ class ConfessionsController < ApplicationController
   
   def confession_params
     params.require(:confession).permit(:title, :body, :hashtag_list, :school_id)
+  end
+
+  def find_school
+    @school = School.find(params[:school_id])
   end
 
   def find_confession

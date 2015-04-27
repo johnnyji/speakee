@@ -6,10 +6,14 @@ class SessionsController < ApplicationController
   def create
     @user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = @user.id
-    if @user.school_name_array.sort == @user.education_history_array.sort #aka if the user's schools are still the same
-      redirect_to(school_path(@user.selected_school))
+    if @user.facebook_schools_list.empty?
+      #redirect to some path that allows you to choose a school through a search bar
     else
-      redirect_to(find_or_create_school_path)
+      if @user.facebook_schools_list == @user.speakee_schools_list
+        redirect_to school_path(active_school(@user))
+      else
+        redirect_to find_or_create_school
+      end
     end
   end
 

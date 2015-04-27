@@ -6,7 +6,7 @@
 
     <div class="links">
       <% if current_user == confession.user %>
-        <%= link_to "Delete", confession_path(confession), method: :delete, confirm: "Are you sure?" %>
+        <%= link_to "Delete", school_confession_path(confession.school, confession), method: :delete, confirm: "Are you sure?" %>
       <% else %>
 
         <% if confession.user.gender == "male" %>

@@ -23,11 +23,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  def education_history_array
+  def facebook_schools_list
     eval(self.education_history).uniq
   end
 
-  def school_name_array
+  def speakee_schools_list
     self.schools.map { |school| school.name }
   end
 

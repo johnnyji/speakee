@@ -14,7 +14,6 @@ gem 'responders', '~> 2.1.0'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.1'
 gem 'koala', '~> 1.11.1'
-gem 'react-rails', '~> 0.13.0.0'
 gem 'font-awesome-sass', '~> 4.3.2.1'
 gem 'will_paginate', '~> 3.0.7'
 

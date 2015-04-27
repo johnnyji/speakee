@@ -12,10 +12,9 @@ Rails.application.routes.draw do
   resources :sessions
   
   resources :schools do
-    resources :confessions, only: [:new, :create]
+    resources :confessions
   end
 
-  match "switch_school", to: "schools#switch", as: "switch_school", via: :get
   match "find_or_create_school", to: "schools#create", as: "find_or_create_school", via: :get
   match "/auth/facebook/callback", to: "sessions#create", as: "signin", via: :get
   match "/auth/failure", to: redirect("/"), via: :get
