@@ -1,12 +1,12 @@
 <% @confessions.each do |confession| %>
-  <div class="confession-container">
+  <div class="confession-container" id="confession-<%= confession.id %>">
     <h3 class="title">
       <%= link_to confession.title, confession_path(confession) %>
     </h3>
 
     <div class="links">
       <% if current_user == confession.user %>
-        <%= link_to "Delete", school_confession_path(confession.school, confession), method: :delete, confirm: "Are you sure?" %>
+        <%= link_to "Delete", school_confession_path(confession.school, confession), method: :delete, confirm: "Are you sure?", remote: true %>
       <% else %>
 
         <% if confession.user.gender == "male" %>

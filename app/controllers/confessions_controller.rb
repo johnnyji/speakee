@@ -29,18 +29,17 @@ class ConfessionsController < ApplicationController
     end
   end
 
-  # def delete
-  #   @confession = @school.confessions.find(params[:id])
-  # end
+  def delete
+    @confession = @school.confessions.find(params[:id])
+  end
 
   def destroy
     @confession = @school.confessions.find(params[:id])
     @confession.destroy
-    redirect_to school_path(@school)
-      # respond_to do |format|
-      #   format.html { redirect_to school_path(@confession) }
-      #   format.js {}
-      # end
+    respond_to do |format|
+      format.html { redirect_to school_path(@school) }
+      format.js
+    end
   end
 
   ################################
