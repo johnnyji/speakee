@@ -16,16 +16,24 @@ class ConfessionsController < ApplicationController
   def new
     @school = School.find(params[:school_id])
     @confession = current_user.confessions.build
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def create
     @confession = current_user.confessions.build(confession_params)
     @confession.hashtags = CreateHashtags.call(@confession)
     embed_hashtags(@confession.hashtags, @confession.body)
-    if @confession.save
-      redirect_to school_path(@confession.school)
-    else
-      render "new"
+    respond_to do |format|
+      if @confession.save
+        format.html { redirect_to school_path(@confession.school) } 
+        format.js
+      else
+        format.html { render "new" }
+        format.js 
+      end
     end
   end
 

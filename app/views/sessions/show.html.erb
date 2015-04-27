@@ -12,6 +12,8 @@
   </div>
 
   <div class="user-confession-container">
-    <%= render "/confessions/partials/confession" %>
+    <% @confessions.each do |confession| %>
+      <%= render partial: "/confessions/partials/confession", locals: {confession: confession} %>
+    <% end %>
   </div>
 <% end %>

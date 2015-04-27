@@ -1,0 +1,5 @@
+$newFormContainer = $('.new-form-container');
+$newConfessionForm = $('<%= j (render partial: "confessions/partials/form") %>');
+
+$newFormContainer.html($newConfessionForm);
+$newFormContainer.slideToggle(300);

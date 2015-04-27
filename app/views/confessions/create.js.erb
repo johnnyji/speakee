@@ -1,0 +1,15 @@
+$newConfessionFormContainer = $('.new-form-container');
+$confessionsContainer = $('.school-confessions-container');
+$successMessageDiv = $('.successful-confession-message');
+$confessionTitleError = $('.confession-title-error');
+$confessionBodyError = $('.confession-body-error');
+
+<% if @confession.errors.any? %>
+  $confessionTitleError.html('<%= @confession.errors[:title].last %>');
+  $confessionBodyError.html('<%= @confession.errors[:body].last %>');
+<% else %>
+  $newConfession = $('<%= j (render partial: "schools/partials/confession", locals: {confession: @confession}) %>'); 
+  $newConfessionFormContainer.slideUp(300); 
+  $confessionsContainer.prepend($newConfession);
+  $successMessageDiv.text('Your confession was successfully posted!');
+<% end %>

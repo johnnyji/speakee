@@ -1,33 +1,31 @@
-<% @confessions.each do |confession| %>
-  <div class="confession-container" id="confession-<%= confession.id %>">
-    <h3 class="title">
-      <%= link_to confession.title, confession_path(confession) %>
-    </h3>
+<div class="confession-container" id="confession-<%= confession.id %>">
+  <h3 class="title">
+    <%= link_to confession.title, confession_path(confession) %>
+  </h3>
 
-    <div class="links">
-      <% if current_user == confession.user %>
-        <%= link_to "Delete", school_confession_path(confession.school, confession), method: :delete, confirm: "Are you sure?", remote: true %>
+  <div class="links">
+    <% if current_user == confession.user %>
+      <%= link_to "Delete", school_confession_path(confession.school, confession), method: :delete,remote: true %>
+    <% else %>
+
+      <% if confession.user.gender == "male" %>
+        <i class="fa fa-mars male male"></i>
+      <% elsif confession.user.gender == "female" %>
+        <i class="fa fa-venus female female"></i>
       <% else %>
-
-        <% if confession.user.gender == "male" %>
-          <i class="fa fa-mars male male"></i>
-        <% elsif confession.user.gender == "female" %>
-          <i class="fa fa-venus female female"></i>
-        <% else %>
-          <i class="fa fa-transgender transgender"></i>
-        <% end %>
-
+        <i class="fa fa-transgender transgender"></i>
       <% end %>
-    </div>
 
-    <p class="date"><%= confession.created_at.in_time_zone(confession.user.timezone).strftime("%B %d, %Y") %></p>
-    <p class="body"><%= confession.body.html_safe %></p>
-    <p class="info">
-      <% if confession.comments.count > 0 %>
-        <%= link_to "View comments (#{confession.comments.size})", confession_path(confession) %>
-      <% else %>
-        No comments
-      <% end %>
-    </p>
+    <% end %>
   </div>
-<% end %>
+
+  <p class="date"><%= confession.created_at.in_time_zone(confession.user.timezone).strftime("%B %d, %Y") %></p>
+  <p class="body"><%= confession.body.html_safe %></p>
+  <p class="info">
+    <% if confession.comments.count > 0 %>
+      <%= link_to "View comments (#{confession.comments.size})", confession_path(confession) %>
+    <% else %>
+      No comments
+    <% end %>
+  </p>
+</div>

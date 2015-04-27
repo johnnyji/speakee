@@ -5,8 +5,9 @@ class Confession < ActiveRecord::Base
   has_many :taggings
   has_many :hashtags, through: :taggings, dependent: :destroy
   
-  validates :title, presence: true, uniqueness: true #write custom error message
-  validates :body, presence: true
+  validates_presence_of :body, message: "Your confession can't be blank!"
+  validates_presence_of :title, message: "Enter a title!"
+  validates_uniqueness_of :title, message: "This title's already taken!"
 
   before_save :extract_hashtags
 

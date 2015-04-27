@@ -2,11 +2,15 @@
   <h1 class="page-title"><%= @school.name %> Confessions</h1>
   
   <div class="create-confession">
-    <%= link_to "Write a confession", new_school_confession_path(@school) %>
+    <%= link_to "Write a confession", new_school_confession_path(@school), remote: true, class: "new-confession-link" %>
   </div>
+  <div class="new-form-container" style="display:none;"></div>
+  <div class="successful-confession-message"></div>
 
   <div class="school-confessions-container">
-    <%= render "schools/partials/confession" %>
+   <% @confessions.each do |confession| %>
+    <%= render partial: "schools/partials/confession" , locals: {confession: confession} %>
+   <% end %>
   </div>
 
   <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>

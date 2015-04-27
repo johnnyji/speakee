@@ -1,0 +1,11 @@
+.successful-confession-message {
+  color: green;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.confession-title-error,
+.confession-body-error {
+  margin: 0.5em;
+  color: red;
+}

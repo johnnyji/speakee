@@ -6,7 +6,9 @@
   </div>
 
   <div class="confessions-list-container">
-    <%= render "confessions/partials/confession" %>
+    <% @confession.each do |confession| %>
+      <%= render partial: "confessions/partials/confession", locals: {confession: confession}%>
+    <% end %>
   </div>
   
 </div>

@@ -1,7 +1,9 @@
 <div class="form-container">
-  <%= form_for @confession do |f| %>
+  <%= form_for @confession, remote: true do |f| %>
     <%= f.hidden_field :school_id, value: @school.id %> 
+    <div class="confession-title-error"></div>
     <%= f.text_field :title, placeholder: "Post title" %><br>
+    <div class="confession-body-error"></div>
     <%= f.text_area :body, placeholder: "Post body" %><br>
     <div class="submit-button">
       <%= f.submit "Confess" %>
