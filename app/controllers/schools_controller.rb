@@ -2,7 +2,6 @@ class SchoolsController < ApplicationController
 
   def show
     @school = School.find(params[:id])
-    #WHY IS THIS NOT FINDING THE SCHOOL BY THE ID?
     @confessions = @school.confessions.order("created_at DESC").page(params[:page]).per_page(3)
     respond_to do |format|
       format.html

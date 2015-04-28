@@ -11,35 +11,37 @@ $(function() {
       if ($moreConfessions && $nearBottomOfScreen) {
         $paginationBar.html('<p class="load-more-confessions">Loading Confessions...</p>');
 
-        // this JSON grabs the confessions on the next page
+
+        // OPTION 1
         $.ajax({
-          type: "GET",
-          url: "/schools/3",
-          // dataType: "json",
+          method: "GET",
+          url: $moreConfessions,
+          dataType: "json",
           success: function(data) {
-            var confessions = $.parseJSON(data);
-            console.log(confessions.title);
+            $.each(data, function(index, confession) {
+              console.log(confession.title);
+              // data is now the retrieved confessions of the next page, now how to convert those into confession objects and append them to the confessions container?
+            });
           },
           error: function(data) {
-
+            // where and how in my controller do I specify what JSON data gets send in case of a non-200 status code?
           }
 
         });
 
+        // OPTION 2
+        $.getJSON($moreConfessions).then(function(data) {
+          var moreConfessions = data;
+          setTimeout(function() { 
+            for(i = 0; i < moreConfessions.length; i++) {
+              $paginationBar.html("");
+              // how can I take these javascript objects and fill the _confession partial with them? and then append those partials to the confessions container?
+              debugger;
+              $confessionsContainer.append(moreConfessions[i]);
+            }
+          }, 1000);
+        });
 
-
-
-        // $.getJSON($moreConfessions).then(function(data) {
-        //   var moreConfessions = data;
-        //   setTimeout(function() { 
-        //     for(i = 0; i < moreConfessions.length; i++) {
-        //       $paginationBar.html("");
-        //       // how can I take these javascript objects and fill the _confession partial with them? and then append those partials to the confessions container?
-        //       debugger;
-        //       $confessionsContainer.append(moreConfessions[i]);
-        //     }
-        //   }, 1000);
-        // });
       }
     });
   }
