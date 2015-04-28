@@ -10,38 +10,25 @@ $(function() {
 
       if ($moreConfessions && $nearBottomOfScreen) {
         $paginationBar.html('<p class="load-more-confessions">Loading Confessions...</p>');
-
-
-        // OPTION 1
-        $.ajax({
-          method: "GET",
-          url: $moreConfessions,
-          dataType: "json",
-          success: function(data) {
-            $.each(data, function(index, confession) {
-              console.log(confession.title);
-              // data is now the retrieved confessions of the next page, now how to convert those into confession objects and append them to the confessions container?
-            });
-          },
-          error: function(data) {
-            // where and how in my controller do I specify what JSON data gets send in case of a non-200 status code?
-          }
-
-        });
-
-        // OPTION 2
-        $.getJSON($moreConfessions).then(function(data) {
-          var moreConfessions = data;
-          setTimeout(function() { 
-            for(i = 0; i < moreConfessions.length; i++) {
-              $paginationBar.html("");
-              // how can I take these javascript objects and fill the _confession partial with them? and then append those partials to the confessions container?
-              debugger;
-              $confessionsContainer.append(moreConfessions[i]);
+        console.log('hit');
+        setTimeout(function() {
+          $.ajax({
+            method: "GET",
+            url: $moreConfessions,
+            dataType: "html",
+            success: function(data) {
+              // parses the HTML file for only confession partial div
+              var $nextPageConfessions = $('.confession-container', $.parseHTML(data));
+              $confessionsContainer.append($nextPageConfessions);
+            },
+            error: function(data) {
+              // where and how in my controller do I specify what JSON data gets send in case of a non-200 status code?
             }
-          }, 1000);
-        });
-
+          });
+        }, 1000);
+      }
+      if (!$moreConfessions) {
+        $paginationBar.html('');
       }
     });
   }
