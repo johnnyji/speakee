@@ -16,6 +16,7 @@ gem 'omniauth-facebook', '~> 2.0.1'
 gem 'koala', '~> 1.11.1'
 gem 'font-awesome-sass', '~> 4.3.2.1'
 gem 'will_paginate', '~> 3.0.7'
+gem 'jquery-turbolinks', '~> 2.1.0'
 
 group :development, :test do
   gem 'capybara', '~> 2.4.4'

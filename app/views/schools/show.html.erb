@@ -12,6 +12,8 @@
     <%= render partial: "schools/partials/confession" , locals: {confession: confession} %>
    <% end %>
   </div>
-
-  <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
+  
+  <div class="pagination">
+    <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
+  </div>
 </div>
