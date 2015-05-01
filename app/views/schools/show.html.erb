@@ -7,13 +7,12 @@
   <div class="new-form-container" style="display:none;"></div>
   <div class="successful-confession-message"></div>
 
-  <div class="school-confessions-container">
+  <div class="school-confessions-container" id="confessions">
+  
    <% @confessions.each do |confession| %>
     <%= render partial: "schools/partials/confession" , locals: { confession: confession } %>
    <% end %>
   </div>
   
-  <div class="pagination">
-    <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
-  </div>
+  <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
 </div>

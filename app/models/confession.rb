@@ -7,7 +7,7 @@ class Confession < ActiveRecord::Base
   
   validates_presence_of :body, message: "Your confession can't be blank!"
   validates_presence_of :title, message: "Enter a title!"
-  validates_uniqueness_of :title, message: "This title's already taken!"
+  validates_uniqueness_of :title, { scope: :school_id, message: "This title's already taken!" }
 
   before_save :extract_hashtags
 
