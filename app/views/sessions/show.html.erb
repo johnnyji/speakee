@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if logged_in? %>
   <div class="user-info-container">
     <!-- facebook profile picture -->
     <img src=<%= current_user.large_picture %> alt="" class="profile-picture">
@@ -10,15 +10,18 @@
     <p><%= current_user.location %></p>
     <p>Email: <%= current_user.email %></p>
     <p>Select Active School:</p>
-    <p class="user-active-school"><%= @active_school.name %></p>
+    <p class="user-active-school"><%= current_user_active_school.name %></p>
     <% @non_active_schools.each do |school| %>
       <%= link_to school.name, switch_school_path(school) %><br>
     <% end %>
   </div>
 
-  <div class="user-confession-container">
+  <div class="confessions-container user-confessions">
     <% @confessions.each do |confession| %>
       <%= render partial: "/confessions/partials/confession", locals: {confession: confession} %>
     <% end %>
+
+    <%# <%= will_paginate(@confessions, previous_label: 'Prev', next_label: 'Next') %>
   </div>
+
 <% end %>

@@ -7,7 +7,7 @@
   <div class="new-form-container" style="display:none;"></div>
   <div class="successful-confession-message"></div>
 
-  <div class="school-confessions-container" id="confessions">
+  <div class="confessions-container">
   
    <% @confessions.each do |confession| %>
     <%= render partial: "schools/partials/confession" , locals: { confession: confession } %>

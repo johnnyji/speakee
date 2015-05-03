@@ -6,12 +6,11 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    if user.facebook_schools_list.empty? && user.speakee_schools_list.empty?
-      #redirect to some path that allows you to choose a school through a search bar
+    if no_schools_found(user)
       redirect_to select_school
     else
       if user.facebook_schools_list == user.speakee_schools_list
-        redirect_to school_path(current_user_active_school_id)
+        redirect_to school_path(current_user_active_school)
       else
         redirect_to find_or_create_school
       end
@@ -20,9 +19,8 @@ class SessionsController < ApplicationController
 
   def show #profile page
     @user = User.find(params[:id])
-    @active_school = School.find(current_user_active_school_id)
-    @non_active_schools = @user.schools.where.not(id: current_user_active_school_id)
-    @confessions = @user.confessions.order("created_at DESC")
+    @non_active_schools = @user.schools.where.not(id: current_user_active_school.id)
+    @confessions = @user.confessions.order("created_at DESC").page(params[:page]).per_page(7)
   end
 
   def destroy
@@ -31,7 +29,9 @@ class SessionsController < ApplicationController
   end
 
   def select_school
-    # this page will have a query bar for the user to select a school
+    school = School.find_school_by_name(params[:query])
+    current_user.schools << school
+    redirect_to school_path(current_user_active_school)
   end
 
 end

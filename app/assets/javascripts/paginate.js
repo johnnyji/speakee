@@ -1,7 +1,7 @@
 /* jshint browser:true, jquery:true, undef:true, devel:true */
 $(function onDocumentReady() {
   'use strict';
-  var $confessionsContainer = $('.school-confessions-container');
+  var $confessionsContainer = $('.confessions-container');
   var requestSent = false;
 
   if (!$('.pagination').length) { return; }

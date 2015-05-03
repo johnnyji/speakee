@@ -12,25 +12,8 @@
   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
-  <header>
-
-    <div class="left">
-        <%= link_to "Home", root_path %>
-    </div>
-
-    <div class="right">
-      <% if current_user %>
-        <%= link_to image_tag(current_user.picture, class: "profile-picture"), session_path(current_user) %>
-        <div class="profile-links">
-          <%= link_to "Sign out", signout_path, class: "sign-out" %>
-        </div>
-      <% else %>
-        <%= link_to "Sign in with Facebook", "/auth/facebook", class: "sign-in" %>
-      <% end %>
-    </div>
-
-  </header>
   
+  <%= render partial: "layouts/header" %>
   <section>
     <div class="template-container">
       <%= yield %>
