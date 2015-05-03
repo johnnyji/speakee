@@ -7,12 +7,14 @@ class SchoolsController < ApplicationController
 
   def create
     School.create_or_find(current_user)
-    redirect_to school_path(active_school(current_user))
+    current_school = School.find(current_user_active_school_id)
+    redirect_to school_path(current_school)
   end
 
-  # def switch
-  #   @school = current_user.schools.find(params[:id])
-  #   current_user.switch_school(@school)
-  #   redirect_to school_path
-  # end
+  def switch_school
+    school = School.find(params[:id])
+    current_user.active_school = school.id
+    current_user.save
+    redirect_to school_path(current_user.active_school)
+  end
 end

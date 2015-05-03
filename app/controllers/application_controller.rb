@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def active_school(user)
-    @active_school = user.active_school.exists? ? user.active_school : user.schools.last
+  def current_user_active_school_id
+    @current_user_active_school_id = !current_user.active_school.nil? ? current_user.active_school : current_user.schools.last.id
   end
 
   def current_user
@@ -30,5 +30,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :current_user_active_school_id
 end

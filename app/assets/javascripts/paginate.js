@@ -11,7 +11,7 @@ $(function onDocumentReady() {
 
     if (!$nearBottomOfScreen) { return; }
     var $moreConfessionsUrl = $('.pagination .next_page').attr('href');
-    if (!($moreConfessionsUrl && !window.requestSent)) { return; }
+    if (!($moreConfessionsUrl && !requestSent)) { return; }
 
     var $paginationBar = $('.pagination');
     $paginationBar.text('Loading more...');
