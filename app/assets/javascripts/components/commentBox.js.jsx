@@ -80,17 +80,17 @@ var EditingComment = React.createClass({
   updateComment: function(e) {
     var self = this;
     e.preventDefault();
-    var newCommentBody = $(".edit-comment-form").children("textarea").val();
+    var commentTextarea = e.target.getElementsByTagName("textarea")[0];
     this.props.exitEditing();
     $.ajax({
       method: "PUT",
       url: self.props.updateCommentPath,
-      data: { comment: { body: newCommentBody } },
+      data: { comment: { body: commentTextarea.value } },
       success: function() {
-        self.props.onEditResult("Comment successfully posted!", newCommentBody);
+        self.props.onEditResult("Comment successfully posted!", commentTextarea.value);
       },
       error: function() {
-        self.props.onEditResult("Oops something went wrong!", self.props.originalCommentBody);
+        self.props.onEditResult("Oops something went wrong!", commentTextarea.defaultValue);
       }
     });
   },
@@ -99,7 +99,7 @@ var EditingComment = React.createClass({
       <div className="comment-box">
         <h3><a href={this.props.commenterLink}>{this.props.commenterName}</a></h3>
         <form className="edit-comment-form" onSubmit={this.updateComment}>
-          <textarea>{this.props.commentBody}</textarea><br/>
+          <textarea defaultValue={this.props.commentBody}/><br/>
           <input type="submit" value="Post Comment"/>
         </form>
       </div>
