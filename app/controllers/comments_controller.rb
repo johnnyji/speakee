@@ -25,18 +25,19 @@ class CommentsController < ApplicationController
 
   def update
     if @comment.update_attributes(comment_params)
-      redirect_to confession_path(@comment.confession)
+      head :no_content
     else
-      render "new"
+      head :no_content
     end
   end
 
   def delete
+    binding.pry
   end
 
   def destroy
     @comment.destroy
-    redirect_to confession_path(@comment.confession)
+    head :no_content
   end
 
   private

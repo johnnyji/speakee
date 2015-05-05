@@ -32,6 +32,7 @@ $(function onDocumentReady() {
       complete: function() {
         requestSent = false;
       }
+
     });
   });
 });
